@@ -15,7 +15,8 @@ from telegram.ext import (
 )
 
 # ── Config ──────────────────────────────────────────────
-BOT_TOKEN = "9158713644:AAFZ1mr6XTJkfWX9_nsGVWSsXKxoP0Zh7uA" 
+# 🔥 Yahan token hata diya hai. Ab ye Koyeb/Render ki settings se uthayega.
+BOT_TOKEN = os.environ.get("BOT_TOKEN") 
 BOT_NAME = "Hadi Hi2 Decorater Bot"
 EMOJIS = "❤️‍🔥🎀"
 DEVELOPER = "@hacked_by_hadi"
@@ -174,6 +175,10 @@ def run_web_server():
 
 # ── Main Function ───────────────────────────────────────
 def main():
+    if not BOT_TOKEN:
+        print("❌ ERROR: BOT_TOKEN nahi mila! Koyeb/Render me Environment Variable set karein.")
+        return
+
     threading.Thread(target=run_web_server, daemon=True).start()
     print("🌐 Web server started for hosting...")
 
